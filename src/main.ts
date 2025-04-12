@@ -11,6 +11,10 @@ import { createAddTagsTool } from "./tools/add-tags/index.js";
 import { createRemoveTagsTool } from "./tools/remove-tags/index.js";
 import { createRenameTagTool } from "./tools/rename-tag/index.js";
 import { createReadNoteTool } from "./tools/read-note/index.js";
+import { createReadCanvasTool } from "./tools/read-canvas/index.js";
+import { createCreateCanvasTool } from "./tools/create-canvas/index.js";
+import { createEditCanvasTool } from "./tools/edit-canvas/index.js";
+import { createDeleteCanvasTool } from "./tools/delete-canvas/index.js";
 import { listVaultsPrompt } from "./prompts/list-vaults/index.js";
 import { registerPrompt } from "./utils/prompt-factory.js";
 import path from "path";
@@ -487,7 +491,11 @@ Examples:
       createAddTagsTool(vaultsMap),
       createRemoveTagsTool(vaultsMap),
       createRenameTagTool(vaultsMap),
-      createReadNoteTool(vaultsMap)
+      createReadNoteTool(vaultsMap),
+      createReadCanvasTool(vaultsMap),
+      createCreateCanvasTool(vaultsMap),
+      createEditCanvasTool(vaultsMap),
+      createDeleteCanvasTool(vaultsMap)
     ];
 
     for (const tool of tools) {
@@ -502,7 +510,7 @@ Examples:
     // All prompts are registered in the server constructor
     console.error("All tools registered successfully");
     console.error("Server starting...\n");
-
+    
     // Start the server without logging to stdout
     await server.start();
   } catch (error) {
@@ -523,7 +531,7 @@ Examples:
       id: null
     }));
 
-    // Log details to stderr for debugging
+      // Log details to stderr for debugging
     console.error("\nFatal error starting server:");
     console.error(mcpError.message);
     if (error instanceof Error && error.stack) {

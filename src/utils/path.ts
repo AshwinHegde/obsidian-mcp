@@ -387,8 +387,23 @@ export async function checkPathSafety(basePath: string, targetPath: string): Pro
  * @throws {McpError} If the path is invalid
  */
 export function ensureMarkdownExtension(filePath: string): string {
-  const normalized = normalizePath(filePath);
-  return normalized.endsWith('.md') ? normalized : `${normalized}.md`;
+  if (!filePath.endsWith('.md')) {
+    return `${filePath}.md`;
+  }
+  return filePath;
+}
+
+/**
+ * Ensures that a file path ends with the .canvas extension.
+ * If the extension is missing, it appends it.
+ * @param filePath - The file path to check.
+ * @returns The file path with the .canvas extension.
+ */
+export function ensureCanvasExtension(filePath: string): string {
+  if (!filePath.endsWith('.canvas')) {
+    return `${filePath}.canvas`;
+  }
+  return filePath;
 }
 
 /**

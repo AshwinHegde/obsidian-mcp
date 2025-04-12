@@ -70,11 +70,43 @@ export function createNoteExistsError(path: string): McpError {
 }
 
 /**
+ * Creates a standardized error for when a canvas file already exists
+ */
+export function createCanvasExistsError(path: string): McpError {
+  return new McpError(
+    ErrorCode.InvalidRequest,
+    `A canvas file already exists at: ${path}\n\n` +
+    'To prevent accidental modifications, this operation has been cancelled.\n' +
+    'If you want to modify an existing canvas, please explicitly request to edit or replace it.'
+  );
+}
+
+/**
  * Creates a standardized error for when a note is not found
  */
 export function createNoteNotFoundError(path: string): McpError {
   return new McpError(
     ErrorCode.InvalidRequest,
     `Note "${path}" not found in vault`
+  );
+}
+
+/**
+ * Creates a standardized error for when a canvas file is not found
+ */
+export function createCanvasNotFoundError(path: string): McpError {
+  return new McpError(
+    ErrorCode.InvalidRequest,
+    `Canvas file "${path}" not found in vault`
+  );
+}
+
+/**
+ * Creates a standardized error for when JSON parsing fails
+ */
+export function createInvalidJsonError(path: string, details: string): McpError {
+  return new McpError(
+    ErrorCode.InvalidRequest,
+    `Failed to parse JSON content in canvas file "${path}": ${details}`
   );
 }
