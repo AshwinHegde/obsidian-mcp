@@ -15,6 +15,7 @@ import { createReadCanvasTool } from "./tools/read-canvas/index.js";
 import { createCreateCanvasTool } from "./tools/create-canvas/index.js";
 import { createEditCanvasTool } from "./tools/edit-canvas/index.js";
 import { createDeleteCanvasTool } from "./tools/delete-canvas/index.js";
+import { createListFilesTool } from "./tools/list-files/index.js";
 import { listVaultsPrompt } from "./prompts/list-vaults/index.js";
 import { registerPrompt } from "./utils/prompt-factory.js";
 import path from "path";
@@ -495,7 +496,8 @@ Examples:
       createReadCanvasTool(vaultsMap),
       createCreateCanvasTool(vaultsMap),
       createEditCanvasTool(vaultsMap),
-      createDeleteCanvasTool(vaultsMap)
+      createDeleteCanvasTool(vaultsMap),
+      createListFilesTool(vaultsMap)
     ];
 
     for (const tool of tools) {
