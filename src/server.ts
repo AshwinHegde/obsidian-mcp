@@ -22,6 +22,7 @@ import {
 } from "./resources/resources.js";
 import { listPrompts, getPrompt, registerPrompt } from "./utils/prompt-factory.js";
 import { listVaultsPrompt } from "./prompts/list-vaults/index.js";
+import { articleBreakdownPrompt } from "./prompts/article-breakdown/index.js";
 
 // Utility function to expand home directory
 function expandHome(filepath: string): string {
@@ -96,6 +97,7 @@ export class ObsidianServer {
 
     // Register prompts
     registerPrompt(listVaultsPrompt);
+    registerPrompt(articleBreakdownPrompt);
 
     this.setupHandlers();
 
